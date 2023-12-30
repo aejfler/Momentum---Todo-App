@@ -1,0 +1,18 @@
+# Ignore IntelliJ IDEA files and folders
+.idea/
+
+# Ignore Maven build folder
+target/
+
+# Ignore Node.js modules
+node_modules/
+
+# Ignore frontend build folder (assuming it's named 'build' or 'dist', adjust as needed)
+frontend/build/
+frontend/dist/
+
+# Ignore Spring Boot application properties file
+backend/src/main/resources/application.properties
+
+# Ignore logs
+*.log

@@ -1,0 +1,635 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+:fontNav {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+:yellow {color:#dece19}
+
+
+* {
+  padding: 0;
+  margin:0;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 1rem;
+  /* background: #333; */
+  background: #212529 !important;
+  color: hsl(200, 100%, 90%);
+  /* color:#f19272; */
+  opacity: 1;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.titleNavbar{
+  text-decoration: none;
+  font-family: "BioRhyme", serif;
+  letter-spacing: 14px;
+  font-size: 39px;
+  color: rgb(205, 165, 79);
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 13px;
+  
+}
+.navbar {
+  padding: 1rem;
+  border-bottom: 2px solid ;
+  display: flex;
+  justify-content: space-around;
+
+}
+a.titleNavbar {
+  display: flex;
+  align-items: center;
+}
+
+.navbarLinks ul {
+  display: flex;
+  justify-content: flex-end;
+  right: 10px;
+  margin-top: 10px;
+
+}
+.navbarLinks li {
+  padding: 1rem;
+  list-style: none;
+}
+
+.navbarLinks li a {
+  text-decoration: none;
+  color: whitesmoke;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  padding: 1rem;
+  display: block;
+}
+
+.navbarLinks li:hover {
+  background-color: #555;
+}
+.toggleButton {
+  position: absolute;
+  top: 1.7rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  color: white;
+}
+
+.toggleBar{
+  background-color: white;
+  width: 100%;
+  height: 3px;
+  border-radius: 10px;
+
+}
+
+@media screen and (max-width: 470px) {
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+  .toggleButton {
+    display:flex;
+  }
+  .titleNavbar{
+    font-size: 30px;
+    padding-bottom: 5px;
+    letter-spacing: 8px;
+
+
+  }
+  .navbarLinks {
+    display: none;
+    width: 100%;
+  }
+  .navbarLinks ul:nth-child(1){
+    border-top:  1px solid white;
+  }
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navbarLinks ul {
+    flex-direction: column;
+    width: 100%;
+  }
+  .navbarLinks li {
+    text-align: center;
+    justify-content: center;
+    border-top:  0.01rem solid #555;
+  }
+  .navbarLinks li a {
+    padding: .2rem 0.5rem;
+    font-size: 18px;
+  }
+  .navbarLinks.active {
+    display: flex;
+  }
+
+
+  /* TODOBAR */
+  .filterLabel {
+    display: none;
+  }
+  .filter{
+    padding: 10px;
+  }
+  .todoBar {
+    align-items: center;
+
+  }
+  div.todoBar {
+    padding: 5px;
+    justify-content: space-evenly;
+  }
+  .todoBar .btnBar {
+    height: 50px;
+  }
+  .todoBar .addBtn {
+    width: 100px;
+  }
+  .todoList h2 {
+    text-align: center;
+  }
+
+  /* todo body list */
+  .singularTodoBar {
+    border-bottom: 1px solid #008296;
+    padding: 0px;
+    padding-bottom: 25px;
+    flex-wrap: wrap;
+  }
+  .singularTodoBar .checkbox {
+    display:none;
+  }
+  .singularTodoBar .todoActions {
+    justify-content: center;
+    align-items: center;
+  }
+ 
+  .singularTodoBar .todoActions .isCompletedBtn {
+    width: 90px;
+    font-size: 11px;
+  }
+  .today .percentage {
+    font-size: large;
+    color:#ddd;
+  }
+  .total .percentage {
+    font-size: large;
+    color:#ddd;
+  }
+}
+
+
+@media screen and (max-width:390px){  .singularTodoBar .todoActions {
+  margin-left: 91px;
+  width:70px;
+  justify-content: center;
+  align-items: center;
+}
+}
+@media screen and (max-width:360px){  .singularTodoBar .todoActions {
+  width:50px;
+}}
+
+@media screen and (max-width:650px) { .fc-toolbar.fc-header-toolbar {flex-direction:column;} .fc-toolbar-chunk { display: table-row; text-align:center; padding:5px 0; } }
+@media screen and (min-width:651px) {
+  .insideBody {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  .todoBar {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+}
+
+
+
+
+.title,
+.summary,
+.progressNav {
+  font: --fontNav;
+  font-size: 23px;
+  text-decoration: none;
+  /* color: #dece19; */
+
+}
+
+
+.insideBody {
+  line-height: 40px;
+}
+
+
+.todoBar {
+  display: flex;
+  padding: 20px;
+  padding-left: 7.2rem;
+  padding-right: 7.7rem;
+  justify-content: space-between;
+}
+
+.todoList {
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  border-radius: 10px;
+  border: 2px solid;
+  padding: 2rem;
+}
+
+.todoList h2 {
+  padding: 10px;
+  border-bottom: 3px solid #176386;
+}
+
+
+.singularTodoBar {
+  margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  flex:1;
+  flex-direction: row;
+  align-items: center;
+  padding:10px;
+  border-bottom: 1px solid #176386;
+  padding-bottom: 25px;
+}
+
+
+/* TEXT ROW */
+.todoText {
+  display:grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 40px;
+  font-size: larger;
+}
+
+.dateSpan {
+  white-space: nowrap;
+}
+.timeSpan {
+  margin-left: 40px;
+
+}
+.listRowSpan {
+  white-space: nowrap;
+
+}
+
+
+/* there was width change */
+@media screen and (max-width:770px) {
+  .todoText {
+    grid-template-columns:auto;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 15px;
+  }
+  .dateTimeContainer .timeSpan {
+    margin-left: 20px;
+    white-space: nowrap;
+  }
+  .listRowSpan {
+    display: block;
+    white-space: normal;
+    
+  }
+  #priority options{
+    color: #dece19;
+
+  }
+
+}
+
+.singularTodoBar{
+  padding: 0;
+  padding-bottom: 15px;
+}
+.singularTodoBar:hover {
+  background-color: #555;
+}
+.checkbox {
+  margin-right: 25px;
+}
+
+.todoActions {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+.singularTodoBar .todoActions div { 
+  margin-right:10px;
+
+} 
+.singularTodoBar .todoActions .trash {
+  display: flex;
+  align-items: center;
+}
+
+
+.navbarLinks li {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.btn {
+  background-color: transparent;
+  border: 1px solid hsl(200, 100%, 90%);
+  border-radius: 8px;
+  box-shadow: rgba(213, 217, 217, .5) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: hsl(200, 100%, 90%);
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Amazon Ember",sans-serif;
+  font-size: 13px;
+  line-height: 29px;
+  padding: 0 10px 0 11px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: 70px;
+}
+.btn:hover {
+  background-color: #555;
+  color:aqua;
+
+}
+.btn:focus {
+  border-color: #008296;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+  outline: 0;
+}
+.high {color:red}
+.low {color:green}
+
+
+.filter {
+  align-items: center;
+  padding: 10px;
+}
+
+.addBtn {
+  width: 200px;
+  height: 50px;
+
+}
+.btnX {
+  width:50px;
+  float:right;
+  margin-top: 25px;
+  margin-bottom:0px;
+  margin-right: 20%;
+}
+
+.btnPriority {
+  width: 85px;
+}
+.isCompletedBtn {
+  width: 100px;
+}
+.btnModal {
+  width:50px;
+  height:50px;
+  position: absolute;
+  float:left;
+}
+.btnClicked {
+  border-color: #008296;
+  color: #01c1df;
+  outline: 0;
+}
+
+.filter .btn {
+  width: 100px;
+  margin: 10px;
+  justify-content: space-between;
+}
+
+
+/* FORM SECTION */
+
+.addForm {
+  flex-direction: column;
+  width: 100%;
+  margin-top:20px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-group {
+  width: 100%;
+  margin-left:50%;
+}
+
+.form-group label {
+  font-size: 19px;
+  font-weight:bolder;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.form-group input, .form-group select {
+  width: 50%;
+  padding: 10px;
+  margin: 10px 0 ;
+  border: 1px solid #ddd ;
+  border-radius: 10px;
+  display: block;
+  box-sizing: border-box;
+  text-align: center;
+
+}
+.form-control, .form-select {
+  text-align: center;
+}
+
+.formDiv {
+  display: flex;
+  padding: 13px;
+  justify-content: center;
+  align-items: center;
+}
+
+.formButton {
+  width: 200px;
+  height: 50px;
+  margin-top: 10px;
+  font-size: large;
+}
+
+/* PROGRESS Bar */
+.parent {
+  display: flex;
+  justify-content: center;
+  max-width: auto;
+}
+
+.mainDiv {
+  height: 100%;
+  width: 80%;
+  background-color:#555;
+  justify-content: center;
+  border-radius: 12px;
+  margin: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.childDiv {
+  height: 100%;
+  background-color: #f19272;
+  border-radius: 12px;
+  text-align: left;
+}
+
+.childDiv label {
+  color: white;
+  margin-left: 30px;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+ .percentage {
+  display: flex;
+  justify-content: center;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  color: #ddd;
+  font-size: larger;
+}
+
+ .today {
+  background-color:#176386;
+  font-size: 18px;
+  justify-content: center;
+}
+
+ .total {
+  color:#ddd;
+  font-size: 19px;
+  justify-content: center;
+} 
+
+ .percentageTotal {
+  color:#ddd;
+} 
+
+.parent .progressLabel {
+  display: flex;
+  align-items: center;
+} 
+
+
+/* CALENDAR VIEW */
+.calendarContainer {
+  padding: 30px;
+  display:flex;
+  justify-content: center;
+
+}
+.fc-media-screen {
+  width: 1200px;
+  height: 770px;
+}
+
+/* for listView Calendar */
+.fc-theme-standard .fc-list-day-cushion {
+  background-color: #555;
+  padding: 15px;
+}
+
+
+.fc-event-main{
+  overflow:hidden;
+  background-color: rgb(205, 165, 79);
+  font-size: large;
+}
+.fc-event-title{
+  padding-left: 5px;
+  text-overflow: ellipsis;
+  font-size: medium;
+}
+.fc-theme-standard .fc-popover { 
+  background-color: #333;
+}
+
+.fc-daygrid-event {
+  white-space: nowrap;
+  overflow: hidden;
+  align-items: normal !important;
+  z-index:2;
+}
+
+.fc-list-table .fc-list-event:hover td {
+  background-color: #555;
+}
+.fc .fc-timegrid-axis-cushion, .fc .fc-timegrid-slot-label-cushion {
+  font-weight: 500;
+}
+.fc-daygrid-event-dot {
+  display: none;
+}
+
+.fc-direction-ltr .fc-daygrid-event .fc-event-time{
+  margin-right: 5px;
+  overflow: visible;
+}
+.fc-event-past .fc-list-event{margin-left: 22px;}
+.fc-event-title, .fc-event-time {
+  font-size: 15px;
+  color:white;
+  font-weight: 700;
+}
+
+.fc-daygrid-event:hover {
+  white-space: normal !important;
+  background-color: #176386;
+}
+
+.fc-list-day-text, .fc-list-day-side-text, .fc-col-header-cell-cushion, .fc-daygrid-day-number, .fc-daygrid-day-bottom a {
+  color:#ddd;
+  font-size: larger;
+  text-decoration: none;
+
+}
+/* .fc-event-title:hover, .fc-event-time:hover { */
+  /* white-space: normal !important;
+  background-color: #176386; */
+/* } */
+.fc .fc-list-event-dot{
+  border: calc(var(--fc-list-event-dot-width)/2) solid rgb(205, 165, 79);;
+}
+.fc-popover-title {
+  padding: 5px;
+  font-size: larger;
+  font-weight: 700;
+}
+.fc-list-event-time {
+  font-weight:700 ;
+}
+.fc-list-event-title, .fc-list-event-time {
+  font-size: larger;
+}
+.card {
+  /* border-color: #008296; */
+  border-color: rgb(205, 165, 79);
+}
